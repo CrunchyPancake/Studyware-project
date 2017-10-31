@@ -1,23 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View, Platform, TouchableOpacity, StyleSheet, Button, WebView, ScrollView } from 'react-native';
+import { Constants, WebBrowser } from "expo";
+import { StackNavigator } from 'react-navigation';
+import Login from './screens/Login';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
+export default App = () => <RouteStack style={{ marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight / 2 }} />
+
+const RouteStack = StackNavigator({
+  Login: {screen: Login}
+});
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  button: {
+    margin: 3,
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#2196F3'
   },
-});
+  buttonText: {
+    padding: 7,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: 'white'
+  }
+})
